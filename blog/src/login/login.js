@@ -22,7 +22,7 @@ export default function Login() {
     e.preventDefault();
     try {
       await login(formData);
-      // await auth.signInWithEmailAndPassword(formData.email, formData.password);
+      
       localStorage.setItem("isLoggedIn", "true");
       alert("Login successful");
       navigate("/");

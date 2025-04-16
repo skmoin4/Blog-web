@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Adminlogin } from "../api"; // Ensure this is correct
+import { Adminlogin } from "../api";
 
 export default function Adminslogin() {
   const [formData, setFormData] = useState({ Email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState(""); // Store error messages
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -15,9 +15,9 @@ export default function Adminslogin() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Reset previous errors
+    setError("");
     try {
-      const response = await Adminlogin(formData); // Ensure it returns a promise
+      const response = await Adminlogin(formData);
 
       if (response.error) {
         throw new Error(response.error);
@@ -26,7 +26,6 @@ export default function Adminslogin() {
       alert("Admin Login successful");
       localStorage.setItem("isLoggedIna", "true");
       navigate("/");
-
     } catch (error) {
       setError("Invalid email or password. Please try again.");
       console.error(error);
@@ -37,7 +36,7 @@ export default function Adminslogin() {
     <div className="logincontainer">
       <h1>Admin Login</h1>
 
-      {error && <p style={{ color: "red" }}>{error}</p>} {/* Display error message */}
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
       <form onSubmit={handleSubmit}>
         <div>

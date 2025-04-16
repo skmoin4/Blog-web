@@ -7,7 +7,7 @@ export default function FavBlog() {
   const navigate = useNavigate();
   const handleFavorite = async (postId) => {
     try {
-      // Call the API endpoint to update the favorite status
+      
       const response = await fetch(`http://localhost:5000/blogsite/blogs/${postId}/favorite`, {
         method: 'PATCH',
         headers: {
@@ -21,7 +21,7 @@ export default function FavBlog() {
   
       const updatedPost = await response.json();
   
-      // Update the state with the updated favorite status
+     
       const updatedPosts = posts.map(post =>
         post._id === postId ? { ...post, fav: updatedPost.fav } : post
       );
@@ -32,7 +32,7 @@ export default function FavBlog() {
   };
   
 
-  // Fetching blogs directly within FavBlog component
+
   useEffect(() => {
     const getBlogs = async () => {
       try {
@@ -45,7 +45,7 @@ export default function FavBlog() {
     getBlogs();
   }, []);
 
-  // Filter favorite posts directly here
+
   const favoritePosts = posts.filter(post => post.fav);
 
   return (

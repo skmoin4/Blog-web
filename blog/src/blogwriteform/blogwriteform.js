@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios"; // Assuming you're using axios to make API calls
+import axios from "axios"; 
 import "./blogwriteform.scss";
 import { useNavigate } from "react-router-dom";
 

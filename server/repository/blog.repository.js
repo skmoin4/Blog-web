@@ -28,20 +28,21 @@ export default class BlogRepository {
 
 try {
   const blog = await blogModel.findById(id); 
+  return blog;
 } catch (error) {
   console.log(error)
 }
 
   }
-  // Inside BlogRepository.js
+
   async updateFavorite(id) {
     try {
-      const blog = await blogModel.findById(id);  // Correct model
+      const blog = await blogModel.findById(id); 
       if (!blog) {
         throw new Error("Blog not found");
       }
   
-      // Toggle the favorite status
+      
       blog.fav = !blog.fav;
       const updatedBlog = await blog.save();
   

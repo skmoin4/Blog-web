@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "../api";
-import { fetchBlogs ,} from "../api";
-import './viewblog.scss';
+import "./viewblog.scss";
 
 export default function ViewBlog() {
   const { id } = useParams();
@@ -15,6 +14,7 @@ export default function ViewBlog() {
     const fetchBlog = async () => {
       try {
         const { data } = await axios.get(`/blogsite/blogs/${id}`);
+        console.log("Fetched blog:", data);
         setBlog(data);
         setLoading(false);
       } catch (err) {
@@ -26,17 +26,9 @@ export default function ViewBlog() {
     fetchBlog();
   }, [id]);
 
-  if (loading) {
-    return <div className="loading">Loading...</div>; // You can enhance this with a spinner
-  }
-
-  if (error) {
-    return <div className="error">{error}</div>;
-  }
-
-  if (!blog) {
-    return <div className="error">Blog not found!</div>;
-  }
+  if (loading) return <div className="loading">Loading...</div>;
+  if (error) return <div className="error">{error}</div>;
+  if (!blog) return <div className="error">Blog not found!</div>;
 
   return (
     <div className="viewblog-container">
@@ -44,7 +36,6 @@ export default function ViewBlog() {
       <h1>{blog.title}</h1>
       <h2>{blog.keyword}</h2>
       <p>{blog.content}</p>
-   
       <button onClick={() => navigate("/")}>Back</button>
     </div>
   );

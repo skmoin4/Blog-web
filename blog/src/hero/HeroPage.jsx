@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "../api"; // Importing axios instance
+import axios from "../api"; 
 import { useNavigate } from "react-router-dom";
 import './heropage.scss';
 import { FaRegHeart, FaHeart } from "react-icons/fa";
@@ -11,13 +11,11 @@ export default function Blog() {
 
   const handleFavorite = async (postId) => {
     try {
-      // Optimistically update the UI
       const updatedPosts = posts.map(post =>
         post._id === postId ? { ...post, fav: !post.fav } : post
       );
       setPosts(updatedPosts);
 
-      // Use Axios to call the API and update the favorite status on the server
       const response = await axios.patch(`/blogsite/blogs/${postId}/favorite`);
 
       if (response.status !== 200) {
@@ -26,7 +24,6 @@ export default function Blog() {
 
       const updatedPost = response.data;
 
-      // Update the state with the correct favorite status
       const finalUpdatedPosts = posts.map(post =>
         post._id === postId ? { ...post, fav: updatedPost.fav } : post
       );
@@ -35,7 +32,6 @@ export default function Blog() {
       console.error("Failed to update favorite status:", err);
       setError("Failed to update favorite status. Please try again.");
       
-      // Revert the UI change if there was an error
       const revertedPosts = posts.map(post =>
         post._id === postId ? { ...post, fav: !post.fav } : post
       );
