@@ -1,0 +1,90 @@
+.navcontainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+}
+
+.left {
+  display: flex;
+  gap: 20px;
+
+  div{
+   
+      display: flex;
+  flex-direction: row;
+   gap: 1rem;
+  
+  }
+}
+
+.rdiv {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.userprofile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.userprofile img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.login-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 15px;
+  z-index: 1000;
+}
+
+.dropdown-menu button {
+
+  cursor: pointer;
+  padding: 5px 30px;
+width: 9rem;
+  
+}
+
+.dropdown-menu button:hover {
+  background-color: #f1f1f1;
+}
+
+.logoutdropdown{
+  position: absolute;
+  left: 42%;
+  top: 40%;
+  padding: 2rem;
+  border: 1px rgb(0, 0, 0) solid;
+  background-color: #a1a2a3;
+
+  div{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  button{
+   font-weight: 700;
+    padding: 0.2rem 1rem;
+
+  }
+}
