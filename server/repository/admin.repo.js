@@ -27,5 +27,13 @@ export default class AdminRepository {
       throw new Error("Something went wrong with the database");
     }
   }
+  async Adminlogin(Email, password) {
+    try {
+      return await Admin.findOne({ Email, password });
+    } catch (err) {
+      console.log(err);
+      throw new Error("Something went wrong with the database");
+    }
+  }
 }
 
